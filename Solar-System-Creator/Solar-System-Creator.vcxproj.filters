@@ -15,7 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="solarSystemCreator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\artificialSatellite.cpp">
