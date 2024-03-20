@@ -7,6 +7,8 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 
+#include "include/planet.h";
+
 using namespace std;
 
 int main()

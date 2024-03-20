@@ -133,6 +133,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Solar-System-Creator.cpp" />
+    <ClCompile Include="src\artificialSatellite.cpp" />
+    <ClCompile Include="src\asteroid.cpp" />
+    <ClCompile Include="src\background.cpp" />
+    <ClCompile Include="src\blackHole.cpp" />
+    <ClCompile Include="src\colorWheel.cpp" />
+    <ClCompile Include="src\comet.cpp" />
+    <ClCompile Include="src\naturalSatellite.cpp" />
+    <ClCompile Include="src\planet.cpp" />
+    <ClCompile Include="src\smallObjects.cpp" />
+    <ClCompile Include="src\spaceObject.cpp" />
+    <ClCompile Include="src\star.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\artificialSatellite.h" />
+    <ClInclude Include="include\asteroid.h" />
+    <ClInclude Include="include\background.h" />
+    <ClInclude Include="include\blackHole.h" />
+    <ClInclude Include="include\colorWheel.h" />
+    <ClInclude Include="include\comet.h" />
+    <ClInclude Include="include\naturalSatellite.h" />
+    <ClInclude Include="include\planet.h" />
+    <ClInclude Include="include\smallObjects.h" />
+    <ClInclude Include="include\spaceObject.h" />
+    <ClInclude Include="include\star.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
