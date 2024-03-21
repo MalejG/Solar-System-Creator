@@ -7,8 +7,8 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 
-#include "spaceObject.h"
 #include "star.h"
+#include "planet.h"
 
 
 using namespace std;
@@ -16,20 +16,31 @@ using namespace std;
 int main()
 {
     cout << "create objects\n";
-
+    /*
     unique_ptr<spaceObject> objekty[]
         = {
         make_unique<star>(),
         make_unique<star>()
     };
-    cout << "\nstart calling objects\n";
     
-    for (auto& volanyObjekt : objekty) 
+    
+        cout << "\nCalling objects\n";
+
+    for (auto& volanyObjekt : objekty)
     {
         volanyObjekt->call();
     }
 
-    cout << "\nstop calling objects\n";
+    
+    */
+    
+    star slunce{50};
+    planet zeme{ 20, slunce };
+
+
+
+
+
 
 
     sf::RenderWindow window(sf::VideoMode(1200, 800), "Solar System Creator");
@@ -53,5 +64,6 @@ int main()
         window.display();
     }
 
+    cout << "\nDestroing objects\n";
     return 0;
 }

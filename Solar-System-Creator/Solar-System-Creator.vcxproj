@@ -27,6 +27,7 @@
     <ClCompile Include="comet.cpp" />
     <ClCompile Include="naturalSatellite.cpp" />
     <ClCompile Include="planet.cpp" />
+    <ClCompile Include="radiusWheel.cpp" />
     <ClCompile Include="smallObjects.cpp" />
     <ClCompile Include="solarSystemCreator.cpp" />
     <ClCompile Include="spaceObject.cpp" />
@@ -41,6 +42,7 @@
     <ClInclude Include="comet.h" />
     <ClInclude Include="naturalSatellite.h" />
     <ClInclude Include="planet.h" />
+    <ClInclude Include="radiusWheel.h" />
     <ClInclude Include="smallObjects.h" />
     <ClInclude Include="spaceObject.h" />
     <ClInclude Include="star.h" />

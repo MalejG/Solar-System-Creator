@@ -45,6 +45,9 @@
     <ClCompile Include="blackHole.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="radiusWheel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="naturalSatellite.h">
@@ -78,6 +81,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="planet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="radiusWheel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

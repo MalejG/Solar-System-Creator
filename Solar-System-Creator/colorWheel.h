@@ -1,12 +1,19 @@
 #pragma once
 
+#include <vector>
+#include <map>
+#include <iostream>
+#include <string>
+
+using namespace std;
 
 class colorWheel
 {
 public:
 	colorWheel();
-	unsigned next();
+	//getColor();
+	//unsigned next();
 private:
-	unsigned m_index;
+	map<string, vector<unsigned>> palettes;
 
 };
