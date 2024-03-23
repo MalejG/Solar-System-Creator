@@ -15,13 +15,13 @@ planet::~planet()
 	cout << __FUNCTION__ << "\n";
 }
 
-planet::planet(const int& radius, spaceObject& connected)
+planet::planet(const float& radius, spaceObject& connected)
 	: m_radius { radius }
 , m_connectedTo{ &connected }
 {
 }
 
-int planet::getRadius() const
+float planet::getRadius() const
 {
 	return m_radius;
 }
@@ -33,7 +33,7 @@ spaceObject* planet::getConnection() const
 }
 
 
-void planet::setRadius(const int& radius)
+void planet::setRadius(const float& radius)
 {
 	m_radius = radius;
 }
@@ -41,6 +41,14 @@ void planet::setRadius(const int& radius)
 void planet::setConnection(spaceObject* connectedTo)
 {
 	m_connectedTo.insert(connectedTo);
+}
+
+void planet::draw(sf::RenderWindow& window)
+{
+	sf::CircleShape planetObj(m_radius);
+	planetObj.setFillColor(sf::Color::Green);
+	window.draw(planetObj);
+
 }
 
 

@@ -14,7 +14,7 @@ star::~star()
 	cout << __FUNCTION__ << "\n";
 }
 
-star::star(const int& radius)
+star::star(const float& radius)
 	: m_radius {radius}
 {
 }
@@ -24,7 +24,7 @@ void star::call()
 	cout << "\nim star";
 }
 
-int star::getRadius() const
+float star::getRadius() const
 {
 	return m_radius;
 }
@@ -34,11 +34,18 @@ spaceObject* star::getConnection() const
 	return nullptr;
 }
 
-void star::setRadius(const int& radius)
+void star::setRadius(const float& radius)
 {
 	m_radius = radius;
 }
 
 void star::setConnection(spaceObject* connectedTo)
 {
+}
+
+void star::draw(sf::RenderWindow& window)
+{
+	sf::CircleShape starObj(m_radius);
+	starObj.setFillColor(sf::Color::Yellow);
+	window.draw(starObj);
 }

@@ -9,16 +9,19 @@ class star : public spaceObject
 public:
 	star();
 	 ~star();
-	star(const int& radius);
+	star(const float& radius);
 
-	int getRadius() const override;
+	float getRadius() const override;
 	spaceObject* getConnection() const override;
 
-	void setRadius(const int& radius) override;
+	void setRadius(const float& radius) override;
 	void setConnection(spaceObject* connectedTo) override;
+
+	virtual void draw(sf::RenderWindow& window) override;
+
 
 	void call() override;
 
 private:
-	int m_radius;
+	float m_radius;
 };

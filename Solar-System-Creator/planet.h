@@ -11,16 +11,18 @@ public:
 
 	planet();
 	 ~planet();
-	planet(const int& radius, spaceObject& connected);
+	planet(const float& radius, spaceObject& connected);
 
-	int getRadius() const override;
+	float getRadius() const override;
 	spaceObject* getConnection() const override;
 
-	void setRadius(const int& radius) override;
+	void setRadius(const float& radius) override;
 	void setConnection(spaceObject* connectedTo) override;
+
+	virtual void draw(sf::RenderWindow& window) override;
 
 	void call() override;
 private:
-	int m_radius;
+	float m_radius;
 	std::set<spaceObject*> m_connectedTo;
 };

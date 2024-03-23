@@ -15,7 +15,6 @@ using namespace std;
 
 int main()
 {
-    cout << "create objects\n";
     /*
     unique_ptr<spaceObject> objekty[]
         = {
@@ -33,23 +32,26 @@ int main()
 
     
     */
+
+    cout << "create objects\n";
+
+    star slunce{ 100 };
+    planet zeme{ 10, slunce };
     
-    star slunce{50};
-    planet zeme{ 20, slunce };
 
 
 
+    sf::CircleShape circle(50);
+    circle.setFillColor(sf::Color::Red);
+    circle.setPosition(600 - circle.getRadius(), 400 - circle.getRadius());
 
-
-
-
+    //UPDATE
     sf::RenderWindow window(sf::VideoMode(1200, 800), "Solar System Creator");
     while (window.isOpen())
     {
-        sf::CircleShape circle(50);
-        circle.setFillColor(sf::Color::Red);
 
-        circle.setPosition(600 - circle.getRadius(), 400 - circle.getRadius());
+
+        
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -57,10 +59,13 @@ int main()
                 window.close();
         }
 
+
+
         window.clear();
 
-        window.draw(circle);
-        
+        slunce.draw(window);
+        zeme.draw(window);
+
         window.display();
     }
 
