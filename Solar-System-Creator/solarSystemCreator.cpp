@@ -36,14 +36,11 @@ int main()
     cout << "create objects\n";
 
     star slunce{ 100 };
-    planet zeme{ 10, slunce };
-    
+    planet planet1{ 10, slunce, 200, 0, 0.005f };
+    planet planet2{ 8, slunce, 300, 180, 0.006f };
+    planet planet3{ 3, planet1, 30, 0, 0.03f };
+    planet planet4{ 3, planet3, 10, 0, 0.06f };
 
-
-
-    sf::CircleShape circle(50);
-    circle.setFillColor(sf::Color::Red);
-    circle.setPosition(600 - circle.getRadius(), 400 - circle.getRadius());
 
     //UPDATE
     sf::RenderWindow window(sf::VideoMode(1200, 800), "Solar System Creator");
@@ -59,12 +56,18 @@ int main()
                 window.close();
         }
 
-
+        planet1.update();
+        planet2.update();
+        planet3.update();
+        planet4.update();
 
         window.clear();
 
         slunce.draw(window);
-        zeme.draw(window);
+        planet1.draw(window);
+        planet2.draw(window);
+        planet3.draw(window);
+        planet4.draw(window);
 
         window.display();
     }

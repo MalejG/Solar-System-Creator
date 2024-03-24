@@ -19,8 +19,8 @@ public:
 
 	virtual void draw(sf::RenderWindow& window) override;
 
-
-	void call() override;
+	sf::Vector2f getPosition() const;
+	void update()  {};
 
 private:
 	float m_radius;

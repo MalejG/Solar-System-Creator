@@ -11,7 +11,7 @@ public:
 
 	planet();
 	 ~planet();
-	planet(const float& radius, spaceObject& connected);
+	planet(const float& radius, spaceObject& connected, float orbitRadius, float orbitAngle, float orbitSpeed);
 
 	float getRadius() const override;
 	spaceObject* getConnection() const override;
@@ -21,8 +21,12 @@ public:
 
 	virtual void draw(sf::RenderWindow& window) override;
 
-	void call() override;
+	sf::Vector2f getPosition() const;
+
+	void update() override;
+
 private:
 	float m_radius;
 	std::set<spaceObject*> m_connectedTo;
+	orbit* m_orbit;
 };

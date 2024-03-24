@@ -3,6 +3,7 @@
 
 using namespace std;
 
+
 spaceObject::spaceObject()
 {
 	cout << __FUNCTION__ << "\n";

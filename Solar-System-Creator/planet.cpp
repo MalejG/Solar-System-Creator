@@ -3,9 +3,12 @@
 #include <iostream>
 
 using namespace std;
+
 planet::planet()
 	: m_radius {10}
 	, m_connectedTo {}
+	, m_orbit{ }
+
 {
 	cout << __FUNCTION__ << "\n";
 }
@@ -15,10 +18,12 @@ planet::~planet()
 	cout << __FUNCTION__ << "\n";
 }
 
-planet::planet(const float& radius, spaceObject& connected)
+planet::planet(const float& radius, spaceObject& connected, float orbitRadius, float orbitAngle, float orbitSpeed)
 	: m_radius { radius }
 , m_connectedTo{ &connected }
+, m_orbit{ new orbit(&connected, orbitRadius, orbitAngle, orbitSpeed) }
 {
+	cout << __FUNCTION__ << "\n";
 }
 
 float planet::getRadius() const
@@ -45,15 +50,24 @@ void planet::setConnection(spaceObject* connectedTo)
 
 void planet::draw(sf::RenderWindow& window)
 {
-	sf::CircleShape planetObj(m_radius);
+	sf::Vector2f position = getPosition();
+	sf::CircleShape planetObj(m_radius);\
+	planetObj.setPosition(position.x - m_radius, position.y - m_radius);
 	planetObj.setFillColor(sf::Color::Green);
 	window.draw(planetObj);
 
 }
 
 
-
-void planet::call()
+sf::Vector2f planet::getPosition() const
 {
-	cout << "\nim planet";
+	return m_orbit->getPosition();
+}
+
+void planet::update()
+{
+	if (m_orbit)
+	{
+		m_orbit->update();
+	}
 }
