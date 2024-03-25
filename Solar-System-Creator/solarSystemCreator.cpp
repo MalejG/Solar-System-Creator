@@ -5,7 +5,6 @@
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
-#include <SFML/Graphics.hpp>
 
 #include "star.h"
 #include "planet.h"
@@ -61,7 +60,8 @@ int main()
         planet3.update();
         planet4.update();
 
-        window.clear();
+        sf::Color backgroudColor(100, 100, 100);
+        window.clear(backgroudColor);
 
         slunce.draw(window);
         planet1.draw(window);

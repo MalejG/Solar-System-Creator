@@ -16,6 +16,7 @@ public:
 
 	void setRadius(const float& radius) override;
 	void setConnection(spaceObject* connectedTo) override;
+	void setColorWheel() override;
 
 	virtual void draw(sf::RenderWindow& window) override;
 

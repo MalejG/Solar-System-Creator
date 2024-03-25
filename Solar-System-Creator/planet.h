@@ -1,7 +1,7 @@
 #pragma once
 
 #include "spaceObject.h"
-
+#include "colorWheel.h"
 #include <set>
 
 class planet : public spaceObject
@@ -18,6 +18,7 @@ public:
 
 	void setRadius(const float& radius) override;
 	void setConnection(spaceObject* connectedTo) override;
+	void setColorWheel() override;
 
 	virtual void draw(sf::RenderWindow& window) override;
 
@@ -29,4 +30,6 @@ private:
 	float m_radius;
 	std::set<spaceObject*> m_connectedTo;
 	orbit* m_orbit;
+	static colorWheel m_wheel;
+	sf::Color m_color;
 };

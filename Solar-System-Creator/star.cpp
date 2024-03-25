@@ -41,6 +41,10 @@ void star::setConnection(spaceObject* connectedTo)
 {
 }
 
+void star::setColorWheel()
+{
+}
+
 void star::draw(sf::RenderWindow& window)
 {
 	sf::CircleShape starObj(m_radius);

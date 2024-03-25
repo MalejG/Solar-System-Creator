@@ -12,7 +12,6 @@ orbit::orbit(spaceObject* spaceObject, float radius, float angle, float speed)
     , m_speed { speed }
 {
     cout << __FUNCTION__ << "\n";
-
 }
 
 void orbit::update()
@@ -33,4 +32,3 @@ sf::Vector2f orbit::getPosition() const
     float y = center.y + sin(m_angle * 3.14159f / 180.0f) * m_radius;
     return { x ,y };
 }
-;

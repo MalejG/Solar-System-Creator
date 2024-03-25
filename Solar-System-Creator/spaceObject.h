@@ -2,6 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "colorWheel.h"
+
 #include "orbit.h"
 
 class orbit;
@@ -14,12 +16,15 @@ public:
 	spaceObject();
 	virtual ~spaceObject();
 
+	//get
 	virtual float getRadius() const = 0;
 	virtual spaceObject* getConnection() const = 0;
 	
+	//set
 	virtual void setRadius(const float& radius) = 0;
 	virtual void setConnection(spaceObject* connectedTo) = 0;
-	
+	virtual void setColorWheel() = 0;
+
 	//draw
 	virtual void draw(sf::RenderWindow& window) = 0;
 
@@ -28,6 +33,4 @@ public:
 	virtual sf::Vector2f getPosition() const = 0;
 
 private:
-
-	//static colorWheel m_colorWheel;
 };

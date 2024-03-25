@@ -4,6 +4,10 @@
 #include <map>
 #include <iostream>
 #include <string>
+#include <SFML/Graphics.hpp>
+
+
+
 
 using namespace std;
 
@@ -11,9 +15,9 @@ class colorWheel
 {
 public:
 	colorWheel();
-	//getColor();
-	//unsigned next();
-private:
-	map<string, vector<unsigned>> palettes;
+	sf::Color getColor(const string & objectType);
 
+private:
+	map<string, vector<sf::Color>> palety;
+	map<string, size_t> index;
 };

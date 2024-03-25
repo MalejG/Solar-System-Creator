@@ -4,6 +4,8 @@
 
 using namespace std;
 
+colorWheel planet::m_wheel;
+
 planet::planet()
 	: m_radius {10}
 	, m_connectedTo {}
@@ -11,6 +13,7 @@ planet::planet()
 
 {
 	cout << __FUNCTION__ << "\n";
+	setColorWheel();
 }
 
 planet::~planet()
@@ -23,6 +26,7 @@ planet::planet(const float& radius, spaceObject& connected, float orbitRadius, f
 , m_connectedTo{ &connected }
 , m_orbit{ new orbit(&connected, orbitRadius, orbitAngle, orbitSpeed) }
 {
+	setColorWheel();
 	cout << __FUNCTION__ << "\n";
 }
 
@@ -48,12 +52,19 @@ void planet::setConnection(spaceObject* connectedTo)
 	m_connectedTo.insert(connectedTo);
 }
 
+void planet::setColorWheel()
+{
+	m_color = m_wheel.getColor("planet");
+}
+
 void planet::draw(sf::RenderWindow& window)
 {
 	sf::Vector2f position = getPosition();
-	sf::CircleShape planetObj(m_radius);\
+	sf::CircleShape planetObj(m_radius);
 	planetObj.setPosition(position.x - m_radius, position.y - m_radius);
-	planetObj.setFillColor(sf::Color::Green);
+
+	planetObj.setFillColor(m_color);
+	
 	window.draw(planetObj);
 
 }
