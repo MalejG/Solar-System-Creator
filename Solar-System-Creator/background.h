@@ -5,14 +5,21 @@
 #include <vector>
 #include <memory>
 #include <iostream>
+#include <SFML/Graphics.hpp>
+#include <SFML/System.hpp>
+#include <SFML/Window.hpp>
 
-using spaceObjPtr = std::unique_ptr<spaceObject>;
+using spaceObjPtr = std::shared_ptr<spaceObject>;
 
 class background 
 {
 public:
+	background();
+	void add(spaceObjPtr utvar);
+	void update();
+	void draws(sf::RenderWindow &window);
 	
 private:
- 
 	std::vector<spaceObjPtr> m_spaceObjects;
+	size_t m_pickedSpaceObject;
 };

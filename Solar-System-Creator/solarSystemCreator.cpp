@@ -8,70 +8,87 @@
 
 #include "star.h"
 #include "planet.h"
-
+#include "background.h"
 
 using namespace std;
 
+
+
+class solarSystemCreator
+{
+public:
+    void setSpaceObject();
+    void update();
+    void drawing(sf::RenderWindow &window);
+
+private:
+    background m_background;
+};
+
+void solarSystemCreator::setSpaceObject()
+{
+    auto slunce = std::make_shared<star>(50.0f);
+    m_background.add(slunce);
+    auto planet1 = std::make_shared<planet>(10.0f, *slunce, 200.f, 0.f, 0.005f);
+    m_background.add(planet1);
+    auto planet2 = std::make_shared<planet>(8.0f, *slunce, 300.f, 180.f, 0.006f);
+    m_background.add(planet2);
+    auto planet3 = std::make_shared<planet>(3.0f, *planet1, 30.f, 0.f, 0.03f);
+    m_background.add(planet3);
+    auto planet4 = std::make_shared<planet>(3.f, *planet3, 10.f, 0.f, 0.06f);
+    m_background.add(planet4);
+    auto planet5 = std::make_shared<planet>(5.f, *slunce, 200.f, 160.f, 0.009f);
+    m_background.add(planet5);
+}
+
+void solarSystemCreator::update()
+{
+
+    m_background.update();
+}
+
+void solarSystemCreator::drawing(sf::RenderWindow &win)
+{
+    m_background.draws(win);
+
+}
+
+
+
+solarSystemCreator m_solarSystemCreator;
+
 int main()
 {
-    /*
-    unique_ptr<spaceObject> objekty[]
-        = {
-        make_unique<star>(),
-        make_unique<star>()
-    };
-    
-    
-        cout << "\nCalling objects\n";
+    std::cout << "create objects\n";
+    m_solarSystemCreator.setSpaceObject();
 
-    for (auto& volanyObjekt : objekty)
-    {
-        volanyObjekt->call();
-    }
-
-    
-    */
-
-    cout << "create objects\n";
-
-    star slunce{ 100 };
-    planet planet1{ 10, slunce, 200, 0, 0.005f };
-    planet planet2{ 8, slunce, 300, 180, 0.006f };
-    planet planet3{ 3, planet1, 30, 0, 0.03f };
-    planet planet4{ 3, planet3, 10, 0, 0.06f };
 
 
     //UPDATE
     sf::RenderWindow window(sf::VideoMode(1200, 800), "Solar System Creator");
     while (window.isOpen())
     {
-
-
         
         sf::Event event;
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
-                window.close();
+            window.close();
         }
 
-        planet1.update();
-        planet2.update();
-        planet3.update();
-        planet4.update();
+        m_solarSystemCreator.update();
 
-        sf::Color backgroudColor(100, 100, 100);
+
+        sf::Color backgroudColor(sf::Color::Black);
         window.clear(backgroudColor);
 
-        slunce.draw(window);
-        planet1.draw(window);
-        planet2.draw(window);
-        planet3.draw(window);
-        planet4.draw(window);
+        m_solarSystemCreator.drawing(window);
+
 
         window.display();
     }
 
-    cout << "\nDestroing objects\n";
+    std::cout << "\nDestroing objects\n";
     return 0;
 }
+
