@@ -15,6 +15,9 @@ public:
 	spaceObject* getConnection() const override;
 
 	void setRadius(const float& radius) override;
+
+	int setOrder(const float& order) override;
+	
 	void setConnection(spaceObject* connectedTo) override;
 	void setColorWheel() override;
 

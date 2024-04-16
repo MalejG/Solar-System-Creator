@@ -9,6 +9,8 @@ void background::add(spaceObjPtr utvar)
 {
 	m_spaceObjects.push_back(move(utvar));
 	m_pickedSpaceObject = m_spaceObjects.size() - 1;
+	searchOrder(*utvar);
+	dynamicOrbit();
 }
 
 void background::update()
@@ -34,6 +36,7 @@ void background::getSpaceObjPtrVec()
 	for (size_t i = 0; i < m_spaceObjects.size(); i++)
 	{
 		cout << " " << i << ": " << &m_spaceObjects[i] << "  ";
+		
 	}
 	cout << "\n";
 
@@ -43,10 +46,22 @@ void background::getSpaceObjPtrVec()
 	}
 }
 
+//po kazdem vytvoreni space objectu se musi prepocitat pozice orbitu
 void background::dynamicOrbit()
 {
 	for (size_t i = 0; i < m_spaceObjects.size(); i++)
 	{
-		//dynamicky vytvorene orbity
+		 m_spaceObjects[i]->getConnection();
+		 //m_spaceObjects[i]->getOrder();
+
+		cout << "  " << m_spaceObjects[i]->getConnection() << "   ";
+		//m_spaceObjects[i]->setOrbit(1);
 	}
+}
+
+int background::searchOrder(spaceObjPtr utvar)
+{
+	int i = 0;
+	
+	return utvar->setOrder(i);
 }

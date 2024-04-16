@@ -21,9 +21,10 @@ planet::~planet()
 	cout << __FUNCTION__ << "\n";
 }
 
-planet::planet(const float& radius, spaceObject& connected, float orbitRadius, float orbitAngle, float orbitSpeed)
+planet::planet(const float& radius, spaceObject& connected, int order, float orbitRadius, float orbitAngle, float orbitSpeed)
 	: m_radius { radius }
 , m_connectedTo{ &connected }
+, m_order { order }
 , m_orbit{ new orbit(&connected, orbitRadius, orbitAngle, orbitSpeed) }
 {
 	setColorWheel();
@@ -41,9 +42,16 @@ spaceObject* planet::getConnection() const
 	return *m_connectedTo.begin();
 }
 
+void planet::setOrder(const float& order)
+{
+	m_order = order;
+}
+
 
 void planet::setRadius(const float& radius)
 {
+	//cout << "Value of radius: " << radius;
+	//cout << "Memory address of radius: " << &radius;
 	m_radius = radius;
 }
 

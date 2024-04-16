@@ -37,6 +37,10 @@ void star::setRadius(const float& radius)
 	m_radius = radius;
 }
 
+void star::setOrder(const float& order)
+{
+}
+
 void star::setConnection(spaceObject* connectedTo)
 {
 }

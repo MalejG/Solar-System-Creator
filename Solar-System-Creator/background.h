@@ -20,6 +20,8 @@ public:
 	void draws(sf::RenderWindow &window);
 	void getSpaceObjPtrVec();
 	void dynamicOrbit();
+
+	int searchOrder(spaceObjPtr utvar);
 private:
 	std::vector<spaceObjPtr> m_spaceObjects;
 	size_t m_pickedSpaceObject;

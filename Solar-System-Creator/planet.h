@@ -11,10 +11,12 @@ public:
 
 	planet();
 	 ~planet();
-	planet(const float& radius, spaceObject& connected, float orbitRadius, float orbitAngle, float orbitSpeed);
+	planet(const float& radius, spaceObject& connected,int order, float orbitRadius, float orbitAngle, float orbitSpeed);
 
 	float getRadius() const override;
 	spaceObject* getConnection() const override;
+
+	int setOrder(const float& order) override;
 
 	void setRadius(const float& radius) override;
 	void setConnection(spaceObject* connectedTo) override;
@@ -34,4 +36,5 @@ private:
 	orbit* m_orbit;
 	static colorWheel m_wheel;
 	sf::Color m_color;
+	int m_order;
 };
