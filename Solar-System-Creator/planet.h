@@ -20,6 +20,8 @@ public:
 	void setConnection(spaceObject* connectedTo) override;
 	void setColorWheel() override;
 
+	//void setOrbit(float newOrbit);
+
 	virtual void draw(sf::RenderWindow& window) override;
 
 	sf::Vector2f getPosition() const;

@@ -57,6 +57,13 @@ void planet::setColorWheel()
 	m_color = m_wheel.getColor("planet");
 }
 
+/*
+void planet::setOrbit(float newOrbit)
+{
+	
+}*/
+
+
 void planet::draw(sf::RenderWindow& window)
 {
 	sf::Vector2f position = getPosition();

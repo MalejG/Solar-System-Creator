@@ -18,7 +18,8 @@ public:
 	void add(spaceObjPtr utvar);
 	void update();
 	void draws(sf::RenderWindow &window);
-	
+	void getSpaceObjPtrVec();
+	void dynamicOrbit();
 private:
 	std::vector<spaceObjPtr> m_spaceObjects;
 	size_t m_pickedSpaceObject;

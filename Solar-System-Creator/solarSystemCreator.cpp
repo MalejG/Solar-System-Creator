@@ -1,4 +1,14 @@
 
+/*
+TODO MLY 2024-04-16: dynamicky vytvorene orbity!
+TODO MLY 2024-04-16: Oznaceni konkretni planety!
+TODO MLY 2024-04-16: pridana planeta s odkazem na oznacenou planetu 
+TODO MLY 2024-04-16: dopln vesmirna telesa
+
+
+
+*/
+
 #include <iostream>
 
 #include <SFML/Graphics.hpp>
@@ -13,13 +23,13 @@
 using namespace std;
 
 
-
 class solarSystemCreator
 {
 public:
     void setSpaceObject();
     void update();
     void drawing(sf::RenderWindow &window);
+    void getAdresses();
 
 private:
     background m_background;
@@ -27,18 +37,25 @@ private:
 
 void solarSystemCreator::setSpaceObject()
 {
-    auto slunce = std::make_shared<star>(50.0f);
+    float starSize = 50.f;
+    auto slunce = std::make_shared<star>(starSize);
     m_background.add(slunce);
-    auto planet1 = std::make_shared<planet>(10.0f, *slunce, 200.f, 0.f, 0.005f);
+
+    //Dynamicky tvorene orbity
+    float starConnection = starSize+20;
+    float nonStarConnection = 10;
+    auto planet1 = std::make_shared<planet>(10.0f, *slunce, starConnection, 0.f, 0.005f);
     m_background.add(planet1);
-    auto planet2 = std::make_shared<planet>(8.0f, *slunce, 300.f, 180.f, 0.006f);
+    auto planet2 = std::make_shared<planet>(8.0f, *slunce, starConnection *2, 180.f, 0.006f);
     m_background.add(planet2);
-    auto planet3 = std::make_shared<planet>(3.0f, *planet1, 30.f, 0.f, 0.03f);
+    auto planet3 = std::make_shared<planet>(3.0f, *planet1, nonStarConnection, 0.f, 0.03f);
     m_background.add(planet3);
-    auto planet4 = std::make_shared<planet>(3.f, *planet3, 10.f, 0.f, 0.06f);
+    auto planet4 = std::make_shared<planet>(3.f, *planet3, nonStarConnection *2, 0.f, 0.06f);
     m_background.add(planet4);
-    auto planet5 = std::make_shared<planet>(5.f, *slunce, 200.f, 160.f, 0.009f);
+    auto planet5 = std::make_shared<planet>(5.f, *slunce, starConnection *3, 160.f, 0.009f);
     m_background.add(planet5);
+    auto planet6 = std::make_shared<planet>(5.f, *slunce, starConnection * 4, 160.f, 0.009f);
+    m_background.add(planet6);
 }
 
 void solarSystemCreator::update()
@@ -53,14 +70,22 @@ void solarSystemCreator::drawing(sf::RenderWindow &win)
 
 }
 
+void solarSystemCreator::getAdresses()
+{
+    m_background.getSpaceObjPtrVec();
+}
+
 
 
 solarSystemCreator m_solarSystemCreator;
+
+
 
 int main()
 {
     std::cout << "create objects\n";
     m_solarSystemCreator.setSpaceObject();
+    m_solarSystemCreator.getAdresses();
 
 
 
