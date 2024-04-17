@@ -44,17 +44,17 @@ void solarSystemCreator::setSpaceObject()
     //Dynamicky tvorene orbity
     float starConnection = starSize+20;
     float nonStarConnection = 10;
-    auto planet1 = std::make_shared<planet>(10.0f, *slunce, starConnection, 0, 0.f, 0.005f);
+    auto planet1 = std::make_shared<planet>(10.0f, *slunce, 0, starConnection,  0.f, 0.005f);
     m_background.add(planet1);
-    auto planet2 = std::make_shared<planet>(8.0f, *slunce, starConnection *2, 1 , 180.f, 0.006f);
+    auto planet2 = std::make_shared<planet>(8.0f, *slunce, 0, starConnection *2,  180.f, 0.006f);
     m_background.add(planet2);
-    auto planet3 = std::make_shared<planet>(3.0f, *planet1, nonStarConnection, 0, 0.f, 0.03f);
+    auto planet3 = std::make_shared<planet>(3.0f, *planet1, 0, nonStarConnection,  0.f, 0.03f);
     m_background.add(planet3);
-    auto planet4 = std::make_shared<planet>(3.f, *planet3, nonStarConnection *2, 1, 0.f, 0.06f);
+    auto planet4 = std::make_shared<planet>(3.f, *planet3, 0, nonStarConnection *2,  0.f, 0.06f);
     m_background.add(planet4);
-    auto planet5 = std::make_shared<planet>(5.f, *slunce, starConnection *3, 2 ,160.f, 0.009f);
+    auto planet5 = std::make_shared<planet>(5.f, *slunce, 0, starConnection *3, 160.f, 0.009f);
     m_background.add(planet5);
-    auto planet6 = std::make_shared<planet>(5.f, *slunce, starConnection * 4, 3, 160.f, 0.009f);
+    auto planet6 = std::make_shared<planet>(5.f, *slunce, 0, starConnection * 4, 160.f, 0.009f);
     m_background.add(planet6);
 
     //!
@@ -94,7 +94,7 @@ int main()
 {
     std::cout << "create objects\n";
     m_solarSystemCreator.setSpaceObject();
-    m_solarSystemCreator.getAdresses();
+    //m_solarSystemCreator.getAdresses();
 
 
 

@@ -11,13 +11,15 @@ public:
 	 ~star();
 	star(const float& radius);
 
+	//get
 	float getRadius() const override;
+	int getOrder() const override;
 	spaceObject* getConnection() const override;
 
+	//set
 	void setRadius(const float& radius) override;
-
-	int setOrder(const float& order) override;
-	
+	void setOrder(const int& order) override;
+	void setOrbit(orbit* newOrbit) override;
 	void setConnection(spaceObject* connectedTo) override;
 	void setColorWheel() override;
 

@@ -9,7 +9,12 @@ void background::add(spaceObjPtr utvar)
 {
 	m_spaceObjects.push_back(move(utvar));
 	m_pickedSpaceObject = m_spaceObjects.size() - 1;
-	searchOrder(*utvar);
+
+	//najde kolik je jiz pripojenych objektu na jednom objektu(mozna projdi vsechny)
+	searchOrder();
+
+	
+	//prenastavy orbity
 	dynamicOrbit();
 }
 
@@ -46,22 +51,44 @@ void background::getSpaceObjPtrVec()
 	}
 }
 
-//po kazdem vytvoreni space objectu se musi prepocitat pozice orbitu
+//po kazdem vytvoreni space objectu a prepocitani rady se musi prepocitat pozice orbitu u vazaneho objektu
 void background::dynamicOrbit()
 {
+
+
+	//check planets
 	for (size_t i = 0; i < m_spaceObjects.size(); i++)
 	{
-		 m_spaceObjects[i]->getConnection();
+
+		cout << " Planet.Radius:"
+			<< m_spaceObjects[i]->getRadius()
+			<< " Connection:"
+			<< m_spaceObjects[i]->getConnection()
+			<< " Order:"
+			<< m_spaceObjects[i]->getOrder();
+		cout << "\n";
 		 //m_spaceObjects[i]->getOrder();
 
-		cout << "  " << m_spaceObjects[i]->getConnection() << "   ";
+		 //m_spaceObjects[i]->getOrder();
+
 		//m_spaceObjects[i]->setOrbit(1);
 	}
 }
 
-int background::searchOrder(spaceObjPtr utvar)
+//prozkouma kolikata je v rade navazana na nejaky objekt a to mu priradi
+void background::searchOrder()
 {
-	int i = 0;
-	
-	return utvar->setOrder(i);
+	spaceObject* coonnectedTo = m_spaceObjects[m_spaceObjects.size()-1]->getConnection();
+	int y = 0;
+	for (size_t i = 0; i < m_spaceObjects.size(); i++)
+	{
+		if(coonnectedTo == m_spaceObjects[i]->getConnection())
+		{
+			y++;
+			if (m_spaceObjects.size()-1 == i)
+			{
+				m_spaceObjects[m_spaceObjects.size() - 1]->setOrder(y);
+			}
+		}
+	}
 }

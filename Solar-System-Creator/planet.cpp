@@ -9,6 +9,7 @@ colorWheel planet::m_wheel;
 planet::planet()
 	: m_radius {10}
 	, m_connectedTo {}
+	, m_order{ 0 }
 	, m_orbit{ }
 
 {
@@ -36,13 +37,18 @@ float planet::getRadius() const
 	return m_radius;
 }
 
+int planet::getOrder() const
+{
+	return m_order;
+}
+
 
 spaceObject* planet::getConnection() const
 {
 	return *m_connectedTo.begin();
 }
 
-void planet::setOrder(const float& order)
+void planet::setOrder(const int& order)
 {
 	m_order = order;
 }
@@ -65,11 +71,11 @@ void planet::setColorWheel()
 	m_color = m_wheel.getColor("planet");
 }
 
-/*
-void planet::setOrbit(float newOrbit)
+
+void planet::setOrbit(orbit* newOrbit)
 {
-	
-}*/
+	m_orbit = newOrbit;
+}
 
 
 void planet::draw(sf::RenderWindow& window)

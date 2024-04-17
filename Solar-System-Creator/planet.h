@@ -13,20 +13,21 @@ public:
 	 ~planet();
 	planet(const float& radius, spaceObject& connected,int order, float orbitRadius, float orbitAngle, float orbitSpeed);
 
+	//get
 	float getRadius() const override;
+	int getOrder() const override;
 	spaceObject* getConnection() const override;
+	sf::Vector2f getPosition() const;
 
-	int setOrder(const float& order) override;
-
+	//set
+	void setOrder(const int& order) override;
+	void setOrbit(orbit* newOrbit) override;
 	void setRadius(const float& radius) override;
 	void setConnection(spaceObject* connectedTo) override;
 	void setColorWheel() override;
 
-	//void setOrbit(float newOrbit);
 
 	virtual void draw(sf::RenderWindow& window) override;
-
-	sf::Vector2f getPosition() const;
 
 	void update() override;
 

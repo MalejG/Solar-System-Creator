@@ -19,11 +19,12 @@ public:
 	//get
 	virtual float getRadius() const = 0;
 	virtual spaceObject* getConnection() const = 0;
+	virtual int getOrder() const = 0;
 	
 	//set
 	virtual void setRadius(const float& radius) = 0;
-	virtual int setOrder(const float& order) = 0;
-	//virtual void setOrbit(orbit orbit) = 0;
+	virtual void setOrder(const int& order) = 0;
+	virtual void setOrbit(orbit* newOrbit) = 0;
 	virtual void setConnection(spaceObject* connectedTo) = 0;
 	virtual void setColorWheel() = 0;
 
