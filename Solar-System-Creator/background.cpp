@@ -60,19 +60,27 @@ void background::dynamicOrbit()
 		spaceObject* coonnectedTo = m_spaceObjects[i]->getConnection();
 		int orderOnConnected = m_spaceObjects[i]->getOrder();
 		float RadiusObject = m_spaceObjects[i]->getRadius();
-		//oldOrbit = m_spaceObjects[i]->getOrbit();
+		float parentRadius = 0;
+
+		if (coonnectedTo != nullptr)
+		{
+			parentRadius = coonnectedTo->getRadius();
+		}
 
 		if (0 < orderOnConnected)
 		{
-			float newOrbitRadius = RadiusObject;
+			
+			//je potreba jeste pricist rozmery predeslich planet!
+			float newOrbitRadius = RadiusObject + parentRadius;
 			for(size_t k = 0;k <= orderOnConnected;k++)
 			{
-				//musi propocitat vsechny planety predtim
-				//potebuji pricist parent radius
-				newOrbitRadius = newOrbitRadius + (k+1 * 20) + m_spaceObjects[k]->getRadius();
+				//newOrbitRadius = newOrbitRadius * orderOnConnected+ 10;
+
 				if(k = orderOnConnected)
 				{
-					orbit* newOrbit = new orbit(coonnectedTo, newOrbitRadius, 0.f, 0.1f);
+					//k porjde ostatni planety a priscte vsechny jejich predesle radius rozmery
+					//tzn planety budou mit nalepene radius na sobe ale nebudou na stejnem orbitu jako ted
+					orbit* newOrbit = new orbit(coonnectedTo, newOrbitRadius, (i * 0.5) * 2.f, (k-i * 0.08) * 0.05f);
 					m_spaceObjects[i]->setOrbit(newOrbit);
 					break;
 				}
@@ -80,11 +88,9 @@ void background::dynamicOrbit()
 		}
 	}
 
-
 	//check planets
 	for (size_t i = 0; i < m_spaceObjects.size(); i++)
 	{
-
 		cout << " Planet.Radius:"
 			<< m_spaceObjects[i]->getRadius()
 			<< " Connection:"
@@ -92,7 +98,6 @@ void background::dynamicOrbit()
 			<< " Order:"
 			<< m_spaceObjects[i]->getOrder();
 		cout << "\n";
-
 	}
 }
 

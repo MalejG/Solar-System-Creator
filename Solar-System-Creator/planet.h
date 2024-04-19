@@ -11,7 +11,7 @@ public:
 
 	planet();
 	 ~planet();
-	planet(const float& radius, spaceObject& connected,int order, float orbitRadius, float orbitAngle, float orbitSpeed);
+	planet(const float& radius, spaceObject& connected, int order, float orbitRadius, float orbitAngle, float orbitSpeed);
 
 	//get
 	float getRadius() const override;
