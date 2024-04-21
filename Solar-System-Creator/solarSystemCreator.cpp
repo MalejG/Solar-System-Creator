@@ -56,7 +56,10 @@ void solarSystemCreator::setSpaceObject()
     m_background.add(planet5);
     auto planet6 = std::make_shared<planet>(7.f, *slunce, 0, starConnection * 4, 160.f, 0.009f);
     m_background.add(planet6);
-
+    auto planet7 = std::make_shared<planet>(4.f, *planet1, 0, nonStarConnection * 4, 160.f, 0.009f);
+    m_background.add(planet7);
+    auto planet8 = std::make_shared<planet>(3.f, *planet1, 0, nonStarConnection * 4, 160.f, 0.009f);
+    m_background.add(planet8);
     //!
     //auto planet7 = std::make_shared<planet>(
     // 0,1f < sizeOfPlanet1, 

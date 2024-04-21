@@ -69,18 +69,34 @@ void background::dynamicOrbit()
 
 		if (0 < orderOnConnected)
 		{
-			
-			//je potreba jeste pricist rozmery predeslich planet!
-			float newOrbitRadius = RadiusObject + parentRadius;
-			for(size_t k = 0;k <= orderOnConnected;k++)
+			for(size_t k = 0;k < orderOnConnected;k++)
 			{
-				//newOrbitRadius = newOrbitRadius * orderOnConnected+ 10;
+				float newOrbitRadius = parentRadius + RadiusObject;
+				
 
 				if(k = orderOnConnected)
 				{
-					//k porjde ostatni planety a priscte vsechny jejich predesle radius rozmery
-					//tzn planety budou mit nalepene radius na sobe ale nebudou na stejnem orbitu jako ted
-					orbit* newOrbit = new orbit(coonnectedTo, newOrbitRadius, (i * 0.5) * 2.f, (k-i * 0.08) * 0.05f);
+
+					//prochazi a nacita planety vazane k jednomu objektu
+					for (size_t t = 0; t < m_spaceObjects.size(); t++)
+					{
+						if (coonnectedTo == m_spaceObjects[t]->getConnection() && orderOnConnected >= m_spaceObjects[t]->getOrder())
+						{
+							newOrbitRadius = newOrbitRadius + (m_spaceObjects[t]->getRadius() * 4);
+							
+
+							//projdi planety navazane na obihajici planetu
+							for (size_t x = 0; x < m_spaceObjects.size(); x++)
+							{
+								if (m_spaceObjects[t].get() == m_spaceObjects[x]->getConnection())
+								{
+									newOrbitRadius = newOrbitRadius + (m_spaceObjects[x]->getRadius() * 4);
+								}
+							}
+						}
+					}
+					//orbit* newOrbit = new orbit(coonnectedTo, newOrbitRadius, (i * 0.5) * 2.f, (k-i * 0.08) * 0.05f);
+					orbit* newOrbit = new orbit(coonnectedTo, newOrbitRadius,  0.15f,  0.01f);
 					m_spaceObjects[i]->setOrbit(newOrbit);
 					break;
 				}
