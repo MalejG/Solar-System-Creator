@@ -63,7 +63,7 @@ void star::draw(sf::RenderWindow& window)
 {
 	sf::CircleShape starObj(m_radius);
 	starObj.setFillColor(sf::Color::Yellow);
-	starObj.setPosition(600 - starObj.getRadius(), 400 - starObj.getRadius());
+	starObj.setPosition(300 - starObj.getRadius(), 300 - starObj.getRadius());
 
 	window.draw(starObj);
 }
@@ -71,5 +71,5 @@ void star::draw(sf::RenderWindow& window)
 
 sf::Vector2f star::getPosition() const
 {
-	return sf::Vector2f(600 , 400);
+	return sf::Vector2f(300 , 300);
 }
