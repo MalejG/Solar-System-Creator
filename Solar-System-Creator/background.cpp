@@ -1,5 +1,7 @@
 #include "background.h"
 
+#include <cassert>
+
 background::background()
 	: m_spaceObjects{  }
 	, m_pickedSpaceObject {  }
@@ -33,8 +35,15 @@ void background::draws(sf::RenderWindow &window)
 	for (size_t i = 0; i < m_spaceObjects.size(); i++)
 	{
 		m_spaceObjects[i]->draw(window);
+		if(i == m_pickedSpaceObject)
+		{
+			m_spaceObjects[i]->drawOutline(window);
+		}
 	}
 }
+
+
+
 
 //for understand what is going on with vector and adresses
 void background::getSpaceObjPtrVec()
@@ -124,6 +133,24 @@ void background::dynamicOrbit()
 			<< " Order:"
 			<< m_spaceObjects[i]->getOrder();
 		cout << "\n";
+	}
+}
+
+void background::selectNext()
+{
+	if (!m_spaceObjects.empty()) 
+	{
+		assert(m_pickedSpaceObject < m_spaceObjects.size());
+		m_pickedSpaceObject = (m_pickedSpaceObject + m_spaceObjects.size() + 1) % m_spaceObjects.size();
+	}
+}
+
+void background::selectPrev()
+{
+	if (!m_spaceObjects.empty())
+	{
+		assert(m_pickedSpaceObject < m_spaceObjects.size());
+		m_pickedSpaceObject = (m_pickedSpaceObject + m_spaceObjects.size() - 1) % m_spaceObjects.size();
 	}
 }
 

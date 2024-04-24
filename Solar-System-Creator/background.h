@@ -21,6 +21,9 @@ public:
 	void getSpaceObjPtrVec();
 	void dynamicOrbit();
 
+	void selectNext();
+	void selectPrev();
+
 	void searchOrder();
 private:
 	std::vector<spaceObjPtr> m_spaceObjects;

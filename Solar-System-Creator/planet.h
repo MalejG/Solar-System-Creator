@@ -28,6 +28,7 @@ public:
 
 
 	virtual void draw(sf::RenderWindow& window) override;
+	virtual void drawOutline(sf::RenderWindow& window)  override;
 
 	void update() override;
 

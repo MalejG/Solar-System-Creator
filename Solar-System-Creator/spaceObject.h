@@ -30,10 +30,11 @@ public:
 
 	//draw
 	virtual void draw(sf::RenderWindow& window) = 0;
+	virtual void drawOutline(sf::RenderWindow& window) = 0;
 
 	//orbit
 	virtual void update() = 0;
 	virtual sf::Vector2f getPosition() const = 0;
-
+	
 private:
 };

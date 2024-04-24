@@ -1,7 +1,6 @@
 
 /*
-TODO MLY 2024-04-16: dynamicky vytvorene orbity!
-TODO MLY 2024-04-16: Oznaceni konkretni planety!
+
 TODO MLY 2024-04-16: pridana planeta s odkazem na oznacenou planetu 
 TODO MLY 2024-04-16: dopln vesmirna telesa
 
@@ -30,6 +29,8 @@ public:
     void update();
     void drawing(sf::RenderWindow &window);
     void getAdresses();
+    void keyLeft();
+    void keyRight();
 
 private:
     background m_background;
@@ -100,6 +101,17 @@ void solarSystemCreator::getAdresses()
     m_background.getSpaceObjPtrVec();
 }
 
+void solarSystemCreator::keyLeft()
+{
+    m_background.selectPrev();
+}
+
+void solarSystemCreator::keyRight()
+{
+    m_background.selectNext();
+
+}
+
 
 
 solarSystemCreator m_solarSystemCreator;
@@ -124,16 +136,28 @@ int main()
         {
             if (event.type == sf::Event::Closed)
             window.close();
+           
+            if (event.type == sf::Event::KeyPressed)
+            {
+                if (event.key.code == sf::Keyboard::Escape)
+                    window.close();
+                else if (event.key.code == sf::Keyboard::Left) 
+                {
+                    m_solarSystemCreator.keyLeft();
+                }
+                else if (event.key.code == sf::Keyboard::Right)
+                {
+                    m_solarSystemCreator.keyRight();
+                }
+            }
         }
 
         m_solarSystemCreator.update();
-
 
         sf::Color backgroudColor(sf::Color::Black);
         window.clear(backgroudColor);
 
         m_solarSystemCreator.drawing(window);
-
 
         window.display();
     }

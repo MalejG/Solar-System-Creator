@@ -90,6 +90,22 @@ void planet::draw(sf::RenderWindow& window)
 
 }
 
+void planet::drawOutline(sf::RenderWindow& window)
+{
+	sf::Vector2f position = getPosition();
+
+	float outlineRadius = (m_radius + 3);
+	sf::CircleShape planetObj(outlineRadius);
+	
+	planetObj.setPosition(position.x - outlineRadius, position.y - outlineRadius);
+
+	planetObj.setFillColor(sf::Color::Red);
+
+	window.draw(planetObj);
+
+
+}
+
 
 sf::Vector2f planet::getPosition() const
 {

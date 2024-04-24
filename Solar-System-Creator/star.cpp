@@ -68,6 +68,16 @@ void star::draw(sf::RenderWindow& window)
 	window.draw(starObj);
 }
 
+void star::drawOutline(sf::RenderWindow& window)
+{
+	float newRadius = (m_radius + 3);
+	sf::CircleShape starObj(newRadius);
+	starObj.setFillColor(sf::Color::Red);
+	starObj.setPosition(300 - newRadius, 300 - newRadius);
+
+	window.draw(starObj);
+}
+
 
 sf::Vector2f star::getPosition() const
 {

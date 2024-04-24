@@ -24,6 +24,7 @@ public:
 	void setColorWheel() override;
 
 	virtual void draw(sf::RenderWindow& window) override;
+	virtual void drawOutline(sf::RenderWindow& window) override;
 
 	sf::Vector2f getPosition() const;
 	void update()  {};
