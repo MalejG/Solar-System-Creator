@@ -12,12 +12,6 @@
     <ClCompile Include="background.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="asteroid.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="artificialSatellite.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="star.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -27,22 +21,13 @@
     <ClCompile Include="solarSystemCreator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="smallObjects.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="planet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="naturalSatellite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="comet.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="colorWheel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="blackHole.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="radiusWheel.cpp">
@@ -56,31 +41,16 @@
     <ClInclude Include="naturalSatellite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="comet.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="colorWheel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="blackHole.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="background.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="asteroid.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="artificialSatellite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="star.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="spaceObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="smallObjects.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="planet.h">

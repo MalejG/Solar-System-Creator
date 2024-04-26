@@ -78,61 +78,48 @@ void background::dynamicOrbit()
 		}
 
 		for (size_t e = 0; e < m_spaceObjects.size(); e++)
-		{ 
+		{
 			if (m_spaceObjects[i].get() == m_spaceObjects[e]->getConnection())
 			{
-				newOrbitRadius = newOrbitRadius +  (m_spaceObjects[e]->getRadius() * 2) + 10 ;
+				newOrbitRadius = newOrbitRadius + (m_spaceObjects[e]->getRadius() * 2) + 10;
 			}
 		}
-		
+
 		newOrbitRadius = newOrbitRadius + parentRadius + RadiusObject;
 
 		if (0 < orderOnConnected)
 		{
-			for(size_t k = 0;k < orderOnConnected;k++)
+			for (size_t k = 0; k < orderOnConnected; k++)
 			{
-			
+
 				//prochazi a nacita planety vazane k jednomu objektu
-					for (size_t t = 0; t < m_spaceObjects.size(); t++)
+				for (size_t t = 0; t < m_spaceObjects.size(); t++)
+				{
+					if (coonnectedTo == m_spaceObjects[t]->getConnection() && orderOnConnected > m_spaceObjects[t]->getOrder())
 					{
-						if (coonnectedTo == m_spaceObjects[t]->getConnection() && orderOnConnected > m_spaceObjects[t]->getOrder())
+						newOrbitRadius = newOrbitRadius + (m_spaceObjects[t]->getRadius() * 2) + 5;
+
+						//projdi planety navazane na obihajici planetu
+						for (size_t x = 0; x < m_spaceObjects.size(); x++)
 						{
-							newOrbitRadius = newOrbitRadius +  (m_spaceObjects[t]->getRadius() * 2) + 5;
-							
-							//projdi planety navazane na obihajici planetu
-							for (size_t x = 0; x < m_spaceObjects.size(); x++)
+							if (m_spaceObjects[t].get() == m_spaceObjects[x]->getConnection())
 							{
-								if (m_spaceObjects[t].get() == m_spaceObjects[x]->getConnection())
-								{
-									newOrbitRadius = newOrbitRadius + (m_spaceObjects[x]->getRadius() * 5) + 10;
-								}
+								newOrbitRadius = newOrbitRadius + (m_spaceObjects[x]->getRadius() * 5) + 10;
 							}
 						}
 					}
+				}
 
-					if (k = orderOnConnected)
-					{
+				if (k = orderOnConnected)
+				{
 
-						orbit* newOrbit = new orbit(coonnectedTo, newOrbitRadius, (i * 0.2) * 1.f, (k-i * 0.02) * 0.01f);
-						//orbit* newOrbit = new orbit(coonnectedTo, newOrbitRadius, 0.15f, 0.01f);
-						m_spaceObjects[i]->setOrbit(newOrbit);
-						break;
-					}
+					orbit* newOrbit = new orbit(coonnectedTo, newOrbitRadius, (i * 0.2) * 1.f, (k - i * 0.02) * 0.01f);
+					//orbit* newOrbit = new orbit(coonnectedTo, newOrbitRadius, 0.15f, 0.01f);
+					m_spaceObjects[i]->setOrbit(newOrbit);
+					break;
 				}
 			}
 		}
-
-
-	//check planets
-	for (size_t i = 0; i < m_spaceObjects.size(); i++)
-	{
-		cout << " Planet.Radius:"
-			<< m_spaceObjects[i]->getRadius()
-			<< " Connection:"
-			<< m_spaceObjects[i]->getConnection()
-			<< " Order:"
-			<< m_spaceObjects[i]->getOrder();
-		cout << "\n";
 	}
 }
 
@@ -152,6 +139,16 @@ void background::selectPrev()
 		assert(m_pickedSpaceObject < m_spaceObjects.size());
 		m_pickedSpaceObject = (m_pickedSpaceObject + m_spaceObjects.size() - 1) % m_spaceObjects.size();
 	}
+}
+
+std::vector<spaceObjPtr> background::getSpaceObjVector()
+{
+	return m_spaceObjects;
+}
+
+size_t background::getPickedSpaceObj()
+{
+	return m_pickedSpaceObject;
 }
 
 //prozkouma kolikata je v rade navazana na nejaky objekt a to mu priradi

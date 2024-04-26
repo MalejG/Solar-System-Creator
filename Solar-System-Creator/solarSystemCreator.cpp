@@ -1,13 +1,3 @@
-
-/*
-
-TODO MLY 2024-04-16: pridana planeta s odkazem na oznacenou planetu 
-TODO MLY 2024-04-16: dopln vesmirna telesa
-
-
-
-*/
-
 #include <iostream>
 
 #include <SFML/Graphics.hpp>
@@ -31,6 +21,7 @@ public:
     void getAdresses();
     void keyLeft();
     void keyRight();
+    void addSO();
 
 private:
     background m_background;
@@ -48,40 +39,8 @@ void solarSystemCreator::setSpaceObject()
 
     auto planet2 = std::make_shared<planet>(20.0f, *slunce, 0, starConnection *2,  180.f, 0.006f);
     m_background.add(planet2);
-
     auto planet5 = std::make_shared<planet>(16.f, *slunce, 0, starConnection *3, 160.f, 0.009f);
     m_background.add(planet5);
-    auto planet6 = std::make_shared<planet>(15.f, *slunce, 0, starConnection * 4, 160.f, 0.009f);
-    m_background.add(planet6);
-
-    auto planet12 = std::make_shared<planet>(20, *slunce, 0, starConnection * 4, 160.f, 0.009f);
-    m_background.add(planet12);
-    auto planet1 = std::make_shared<planet>(20.0f, *slunce, 0, starConnection, 0.f, 0.005f);
-    m_background.add(planet1);
-    auto planet9 = std::make_shared<planet>(5.f, *planet1, 0, nonStarConnection * 4, 160.f, 0.009f);
-    m_background.add(planet9);
-    auto planet10 = std::make_shared<planet>(5.f, *planet1, 0, nonStarConnection * 4, 160.f, 0.009f);
-    m_background.add(planet10);
-
-    auto planet13 = std::make_shared<planet>(5.f, *planet2, 0, nonStarConnection * 4, 160.f, 0.009f);
-    m_background.add(planet13);
-    auto planet14 = std::make_shared<planet>(5.f, *planet2, 0, nonStarConnection * 4, 160.f, 0.009f);
-    m_background.add(planet14);
-    auto planet3 = std::make_shared<planet>(3.0f, *planet1, 0, nonStarConnection, 0.f, 0.03f);
-    m_background.add(planet3);
-    auto planet7 = std::make_shared<planet>(4.f, *planet1, 0, nonStarConnection * 4, 160.f, 0.009f);
-    m_background.add(planet7);
-    auto planet8 = std::make_shared<planet>(3.f, *planet1, 0, nonStarConnection * 4, 160.f, 0.009f);
-    m_background.add(planet8);
-
-    //!
-    //auto planet7 = std::make_shared<planet>(
-    // 0,1f < sizeOfPlanet1, 
-    // *planet1, 
-    // orderOnPlanet1 radiusPlanet1 + radiusPlanet7 + (10 * orderOnPlanet1) 
-    // , rand, rand);
-    
-    //m_background.add(planet7);
 }
 
 void solarSystemCreator::update()
@@ -110,6 +69,18 @@ void solarSystemCreator::keyRight()
 {
     m_background.selectNext();
 
+}
+
+void solarSystemCreator::addSO()
+{
+    if(m_background.getSpaceObjVector()[m_background.getPickedSpaceObj()]->getConnection() == m_background.getSpaceObjVector()[0].get())
+    {
+        m_background.add(std::make_shared<planet>(7.0f, *m_background.getSpaceObjVector()[m_background.getPickedSpaceObj()], 1.f, 0, 0.f, 0.03f));
+    }
+    else if(m_background.getPickedSpaceObj() == 0)
+    {
+        m_background.add(std::make_shared<planet>(16.0f, *m_background.getSpaceObjVector()[m_background.getPickedSpaceObj()], 1.f, 0, 0.f, 0.03f));
+    }
 }
 
 
@@ -148,6 +119,10 @@ int main()
                 else if (event.key.code == sf::Keyboard::Right)
                 {
                     m_solarSystemCreator.keyRight();
+                }
+                else if (event.key.code == sf::Keyboard::K)
+                {
+                    m_solarSystemCreator.addSO();
                 }
             }
         }

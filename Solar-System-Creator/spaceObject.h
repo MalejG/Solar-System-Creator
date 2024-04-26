@@ -35,6 +35,6 @@ public:
 	//orbit
 	virtual void update() = 0;
 	virtual sf::Vector2f getPosition() const = 0;
-	
+
 private:
 };

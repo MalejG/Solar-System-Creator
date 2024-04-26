@@ -24,6 +24,9 @@ public:
 	void selectNext();
 	void selectPrev();
 
+	std::vector<spaceObjPtr> getSpaceObjVector();
+	size_t getPickedSpaceObj();
+	
 	void searchOrder();
 private:
 	std::vector<spaceObjPtr> m_spaceObjects;

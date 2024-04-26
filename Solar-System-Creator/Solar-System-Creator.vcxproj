@@ -19,33 +19,23 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="artificialSatellite.cpp" />
-    <ClCompile Include="asteroid.cpp" />
     <ClCompile Include="background.cpp" />
-    <ClCompile Include="blackHole.cpp" />
     <ClCompile Include="colorWheel.cpp" />
-    <ClCompile Include="comet.cpp" />
     <ClCompile Include="naturalSatellite.cpp" />
     <ClCompile Include="orbit.cpp" />
     <ClCompile Include="planet.cpp" />
     <ClCompile Include="radiusWheel.cpp" />
-    <ClCompile Include="smallObjects.cpp" />
     <ClCompile Include="solarSystemCreator.cpp" />
     <ClCompile Include="spaceObject.cpp" />
     <ClCompile Include="star.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="artificialSatellite.h" />
-    <ClInclude Include="asteroid.h" />
     <ClInclude Include="background.h" />
-    <ClInclude Include="blackHole.h" />
     <ClInclude Include="colorWheel.h" />
-    <ClInclude Include="comet.h" />
     <ClInclude Include="naturalSatellite.h" />
     <ClInclude Include="orbit.h" />
     <ClInclude Include="planet.h" />
     <ClInclude Include="radiusWheel.h" />
-    <ClInclude Include="smallObjects.h" />
     <ClInclude Include="spaceObject.h" />
     <ClInclude Include="star.h" />
   </ItemGroup>
